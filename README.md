@@ -4,13 +4,13 @@
 
 ## Ontology
 
-version 202102: __TODO[href]__
+version 2020Q4: __TODO[href]__
 
 ## Datasets
 
 ### SPARQL endpoints
 
-1. [X] STCN: __TODO[href]__
+1. [X] STCN: [label](http://example.com)
 
 ## Linksets
 
