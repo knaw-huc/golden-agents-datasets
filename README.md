@@ -31,3 +31,10 @@ version 2020Q4: </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e346
 
 1. [X] Ecartico, Onstage, STCN: </br> <https://github.com/knaw-huc/golden-agents-queries/blob/master/ecartico-onstage-stcn-ex3.rq>
 2. [X] GA, Ecartico, Onstage, STCN: </br> <https://github.com/knaw-huc/golden-agents-queries/blob/master/ga-ecartico-onstage-stcn-ex3.rq>
+
+# 2021-Q1
+
+## Datasets Named Graphs
+
+1. [X] Personen uit de Nederlandse Thesaurus van Auteursnamen (NTA): </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/nta_20210311>>
+
