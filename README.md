@@ -8,7 +8,7 @@
 
 ## Ontology Named Graph
 
-1. [X]version 2020Q4: </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ga_ontology_20201216>>
+1. [X] version 2020Q4: </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ga_ontology_20201216>>
 
 ## Datasets Named Graphs
 
