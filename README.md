@@ -1,7 +1,7 @@
 # Data- and Linksets released by Golden Agents WP1
 
 
-# SPARQL Endpoint
+## SPARQL Endpoint
 <https://sparql.goldenagents.org/>
 
 # 2020-Q4 
