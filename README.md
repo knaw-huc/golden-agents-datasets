@@ -36,10 +36,10 @@ version 2020Q4: </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e346
 
 ## Ontology Named Graph
 
-version 2020Q4: </br> <to be added>
+version 2020Q4: </br> to be added
 
 ## Datasets Named Graphs
 
 1. [X] Personen uit de Nederlandse Thesaurus van Auteursnamen (NTA): </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/nta_20210311>>
-2. [] Gelegenheidsgedichten tot 1800 in Nederland (GGD): </br> <to be added>
+2. [ ] Gelegenheidsgedichten tot 1800 in Nederland (GGD): </br> to be added
 
