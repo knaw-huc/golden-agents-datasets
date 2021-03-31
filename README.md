@@ -43,3 +43,7 @@ version 2020Q4: </br> to be added
 1. [X] Personen uit de Nederlandse Thesaurus van Auteursnamen (NTA): </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/nta_20210311>>
 2. [ ] Gelegenheidsgedichten tot 1800 in Nederland (GGD): </br> to be added
 
+## Mappings Named Graphs
+
+1. [ ] NTA to GA ontology: </br> to be added
+2. [ ] GGD to GA ontology: </br> to be added
