@@ -47,3 +47,7 @@
 
 1. [ ] NTA to GA ontology: </br> to be added
 2. [ ] GGD to GA ontology: </br> to be added
+
+## SPARQL Queries 
+
+1. [ ] NTA, GGD: </br> to be added
