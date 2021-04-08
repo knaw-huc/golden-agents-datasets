@@ -7,21 +7,21 @@ PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
 SELECT * WHERE {
 
   ?book a schema:Book ;
-  		schema:name ?title ;
-    	schema:author/schema:author ?author ;
+        schema:name ?title ;
+        schema:author/schema:author ?author ;
         schema:publication/schema:publishedBy ?publisher ;
         schema:about ?event .
 
   ?author a schema:Person ;
-         pnv:hasName/pnv:literalName ?authorName ;
-         schema:gender ?authorGender .
+          pnv:hasName/pnv:literalName ?authorName ;
+          schema:gender ?authorGender .
 
   ?publisher a schema:Organization ;
-         schema:name ?publisherName .
+             schema:name ?publisherName .
 
   ?event a sem:Event ;
          sem:hasTimeStamp ?eventDate ;
-  		 sem:eventType ?eventType ;
+         sem:eventType ?eventType ;
          sem:hasActor ?role .
 
   ?role a sem:Role ;
@@ -29,10 +29,10 @@ SELECT * WHERE {
         rdf:value ?person .
 
   ?roleType a sem:RoleType ;
-        rdfs:label ?roleTypeName .
+            rdfs:label ?roleTypeName .
 
   ?person a schema:Person ;
-         pnv:hasName/pnv:literalName ?personName ;
-         schema:gender ?gender .
+          pnv:hasName/pnv:literalName ?personName ;
+          schema:gender ?gender .
 
 }
