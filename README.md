@@ -41,7 +41,7 @@
 ## Datasets Named Graphs
 
 1. [X] Personen uit de Nederlandse Thesaurus van Auteursnamen (NTA): </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/nta_20210311>>
-2. [ ] Gelegenheidsgedichten tot 1800 in Nederland (GGD): </br> to be added
+2. [X] Gelegenheidsgedichten tot 1800 in Nederland (GGD): </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ggd_20210408>>
 
 ## Mappings Named Graphs
 
