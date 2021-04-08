@@ -1,0 +1,41 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ga: <https://data.goldenagents.org/ontology/>
+PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+
+SELECT * WHERE {
+
+  ?book a ga:Book ;
+        ga:hasTitle ?title ;
+        ga:writtenBy ?author ;
+        ga:publishedBy|ga:printedBy ?publisher ;
+        ga:hasContent ?idea .
+
+  ?idea a ga:Idea ;
+        ga:isAbout ?event .
+
+  ?author a ga:Writer ;
+          ga:hasName ?authorName ;
+          ga:gender ?authorGender .
+
+  ?publisher a ga:PrinterOrPublisher ;
+             ga:hasName ?publisherName .
+
+  ?event a ga:Event ;
+         ga:hasXSDDate ?eventDate ;
+         sem:eventType ?eventType ; # help
+         ga:participationOf ?person .
+
+  ?role a ga:Role ;
+        ga:carriedAs ?roleType ;
+        ga:carriedBy ?person ;
+        ga:carriedIn ?event .
+
+  ?roleType a ga:RoleType ;
+            rdfs:label ?roleTypeName . # help
+
+  ?person a ga:Person ;
+          ga:hasName ?personName ;
+          ga:gender ?personGender .
+
+}

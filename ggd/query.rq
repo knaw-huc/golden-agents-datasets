@@ -33,6 +33,6 @@ SELECT * WHERE {
 
   ?person a schema:Person ;
           pnv:hasName/pnv:literalName ?personName ;
-          schema:gender ?gender .
+          schema:gender ?personGender .
 
 }
