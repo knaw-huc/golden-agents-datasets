@@ -5,14 +5,11 @@ PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
 
 SELECT * WHERE {
 
-  ?book a ga:Book ;
+  ?book a ga:WritingArtifact ;
         ga:hasTitle ?title ;
         ga:writtenBy ?author ;
         ga:publishedBy|ga:printedBy ?publisher ;
-        ga:hasContent ?idea .
-
-  ?idea a ga:Idea ;
-        ga:isAbout ?event .
+        ga:hasContent/ga:isAbout ?event .
 
   ?author a ga:Writer ;
           ga:hasName ?authorName ;
