@@ -20,7 +20,7 @@
 
 1. [X] GGD: </br> 
 Queries can be found in this folder: </br> 
-<https://github.com/knaw-huc/golden-agents-datasets/tree/develop/2021_Q1/queries>
+<https://github.com/knaw-huc/golden-agents-datasets/tree/develop/2021_Q1/queries> </br>
 Or here: </br>
 <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ggd-ga.rq> </br>
 <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ggd.rq> </br>
