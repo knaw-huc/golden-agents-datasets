@@ -31,30 +31,30 @@
     #    Sub-Classes Mapping
     ####################################################################
 
-		schema:Book          owl:subClassOf            ga:WritingArtifact   .
+    schema:Book          owl:subClassOf            ga:WritingArtifact   .
 
     ####################################################################
     #    Equivalent Property Mapping
     ####################################################################
 
-		ga:birthDate         owl:equivalentProperty    schema:birthDate     .
-		ga:deathDate         owl:equivalentProperty    schema:deathDate     .
-		ga:inLanguage        owl:equivalentProperty    schema:inLanguage    .
+    ga:birthDate         owl:equivalentProperty    schema:birthDate     .
+    ga:deathDate         owl:equivalentProperty    schema:deathDate     .
+    ga:inLanguage        owl:equivalentProperty    schema:inLanguage    .
 
     ####################################################################
     #    SubProperty Mapping
     ####################################################################
 
-		ga:hasName           rdfs:subPropertyOf        schema:name          . #(domain schema:Person)
-		ga:hasTitle          rdfs:subPropertyOf        schema:name          . #(domain schema:Book)
+    ga:hasName           rdfs:subPropertyOf        schema:name          . #(domain schema:Person)
+    ga:hasTitle          rdfs:subPropertyOf        schema:name          . #(domain schema:Book)
 
-		####################################################################
+    ####################################################################
     #   Property Chain
     #   Note: for data-properties, propertyChainAxiom works only for
     #   mapping purposes, since chain reasoning does not work
     ####################################################################
-		ga:creationDate      owl:propertyChainAxiom    ( schema:publication schema:startDate ) .  # Literal
-		# ga:creationDate owl:equivalentProperty  schema:publication/schema:startDate .
+    ga:creationDate      owl:propertyChainAxiom    ( schema:publication schema:startDate ) .  # Literal
+    # ga:creationDate owl:equivalentProperty  schema:publication/schema:startDate .
 
     ga:writtenBy          owl:propertyChainAxiom    ( schema:author schema:author ) .
     # ga:writtenBy owl:equivalentProperty  schema:author/schema:author .
