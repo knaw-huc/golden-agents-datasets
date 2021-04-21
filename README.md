@@ -50,4 +50,4 @@
 
 ## SPARQL Queries 
 
-1. [ ] NTA, GGD: </br> to be added
+1. [ ] GGD: </br> to be added
