@@ -1,5 +1,5 @@
 # golden-agents-datasets
-## Data- and Linksets released by Golden Agents WP1
+# Data- and Linksets released by Golden Agents WP1
 
 
 ## SPARQL Endpoint
