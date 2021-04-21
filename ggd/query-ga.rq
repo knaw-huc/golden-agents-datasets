@@ -1,7 +1,6 @@
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX ga: <https://data.goldenagents.org/ontology/>
-PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
 
 SELECT * WHERE {
 
@@ -13,14 +12,14 @@ SELECT * WHERE {
 
   ?author a ga:Writer ;
           ga:hasName ?authorName ;
-          ga:gender ?authorGender .
+          ga:hasGender ?authorGender .
 
   ?publisher a ga:PrinterOrPublisher ;
              ga:hasName ?publisherName .
 
   ?event a ga:Event ;
          ga:hasXSDDate ?eventDate ;
-         sem:eventType ?eventType ; # help
+         rdf:type ?eventType ;
          ga:participationOf ?person .
 
   ?role a ga:Role ;
@@ -29,7 +28,7 @@ SELECT * WHERE {
         ga:carriedIn ?event .
 
   ?roleType a ga:RoleType ;
-            rdfs:label ?roleTypeName . # help
+            rdfs:label ?roleTypeName .
 
   ?person a ga:Person ;
           ga:hasName ?personName ;
