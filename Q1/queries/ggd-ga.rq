@@ -7,7 +7,7 @@ SELECT * WHERE {
   ?book a ga:WritingArtifact ;
         ga:hasTitle ?title ;
         ga:writtenBy ?author ;
-        ga:publishedBy|ga:printedBy ?publisher ;
+        ga:publishedBy|ga:printedBy ?printerOrPublisher ;
         ga:hasContent/ga:isAbout ?event .
 
   ?author a ga:Writer ;

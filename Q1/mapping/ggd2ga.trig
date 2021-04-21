@@ -100,10 +100,17 @@
     ga:participationOf      owl:propertyChainAxiom  ( sem:hasActor rdf:value ) .
     # ga:participationOf owl:equivalentProperty sem:hasActor/rdf:value
 
+    # In this dataset
     schema:Organization owl:subClassOf ga:PrinterOrPublisher .
 
-    ga:publishedBy owl:subPropertyOf schema:publishedBy .
-    ga:printedBy owl:subPropertyOf schema:publishedBy .
+    # The GA ontology has separate classes for Publisher and Printer
+    # ga:publishedBy owl:subPropertyOf schema:publishedBy .
+    # ga:printedBy owl:subPropertyOf schema:publishedBy .
+
+    # The value of this is a ga:PrinterOrPublisher, and there is no property for this.
+    # ga:publishedBy|ga:printedBy owl:propertyChainAxiom ( schema:publication schema:publishedBy) .
+    ga:publishedBy owl:propertyChainAxiom ( schema:publication schema:publishedBy) .
+    ga:printedBy owl:propertyChainAxiom ( schema:publication schema:publishedBy) .
 
     # Alternative for the class in OWL:
     # ga:PrinterOrPublisher owl:equivalentClass [ rdf:type owl:Restriction ; 

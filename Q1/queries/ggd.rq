@@ -9,7 +9,7 @@ SELECT * WHERE {
   ?book a schema:Book ;
         schema:name ?title ;
         schema:author/schema:author ?author ;
-        schema:publication/schema:publishedBy ?publisher ;
+        schema:publication/schema:publishedBy ?printerOrPublisher ;
         schema:about ?event .
 
   ?author a schema:Person ;
