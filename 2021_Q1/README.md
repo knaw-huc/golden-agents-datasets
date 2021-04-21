@@ -5,7 +5,7 @@
 
 ## Ontology Named Graph
 
-1. [ ] version 2021Q1: </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ga_ontology_20210421>>
+1. [X] version 2021Q1: </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ga_ontology_20210421>>
 
 ## Datasets Named Graphs
 
@@ -14,8 +14,13 @@
 
 ## Mappings Named Graphs
 
-1. [ ] GGD to GA ontology: </br> to be added
+1. [X] GGD to GA ontology: </br> <<https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ggd2ga_20210421>>
 
 ## SPARQL Queries 
 
-1. [ ] GGD: </br> to be added
+1. [X] GGD: </br> 
+Queries can be found in this folder: </br> 
+<https://github.com/knaw-huc/golden-agents-datasets/tree/develop/2021_Q1/queries>
+Or here: </br>
+<https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ggd-ga.rq> </br>
+<https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ggd.rq> </br>
