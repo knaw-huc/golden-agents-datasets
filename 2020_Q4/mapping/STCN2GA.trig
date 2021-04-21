@@ -1,0 +1,65 @@
+
+####################################################################
+#    Prefixes Mapping
+####################################################################
+
+@prefix      rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>      .
+@prefix     rdfs: <http://www.w3.org/2000/01/rdf-schema#>            .
+@prefix      owl: <http://www.w3.org/2002/07/owl#>                   .
+@prefix   schema: <http://schema.org/>                               .
+@prefix       ga: <https://data.goldenagents.org/ontology/>          .
+@prefix         : <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/> .
+@prefix     void: <http://rdfs.org/ns/void#>                         .
+@prefix    fabio: <http://purl.org/spar/fabio/>                      .
+@prefix     skos: <http://www.w3.org/2004/02/skos/core#>             .
+
+:STCN2GA_20201216 {
+
+    :STCN2GA_20201216  a           fabio:VocabularyMapping ;
+      # this version of the ontology:
+      void:vocabulary     <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ga_ontology_20201216> ;
+      # the vocabulary employed in the one used in this version of stcn_20200226;
+      void:vocabulary     <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/stcn_20200226_Vocab> ;
+      void:target         <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/stcn_20200226> ;
+      skos:example        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ga-ecartico-onstage-stcn-ex3.rq> ;
+      rdfs:seeAlso        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ecartico-onstage-stcn-ex3.rq> .
+
+    ####################################################################
+    #    Sub-Classes Mapping
+    ####################################################################
+
+		ga:CreativeAgent     owl:subClassOf            schema:Person      .
+		schema:Book          owl:subClassOf            ga:Book            .
+
+    ####################################################################
+    #    Equivalent Property Mapping
+    ####################################################################
+
+		ga:birthDate         owl:equivalentProperty    schema:birthDate     .
+		ga:deathDate         owl:equivalentProperty    schema:deathDate     .
+		ga:inLanguage        owl:equivalentProperty    schema:inLanguage    .
+
+		####################################################################
+    #    SubProperty Mapping
+    ####################################################################
+
+		#ga:hasName					 rdfs:domain									ga:Person
+		#ga:CreativeAgent    owl:subClassOf            ga:Person
+		ga:hasName           rdfs:subPropertyOf        schema:name          . #(domain schema:Person)
+		ga:hasTitle          rdfs:subPropertyOf        schema:name          . #(domain schema:Book)
+
+		####################################################################
+    #    Property Chain
+    #   Note: for data-properties, propertyChainAxiom works only for
+    #   mapping purposes, since chain reasoning does not work
+    ####################################################################
+		ga:creationDate      owl:propertyChainAxiom    ( schema:publication schema:startDate ) .
+		# ga:creationDate owl:equivalentProperty  schema:publication/schema:startDate .
+
+    ga:writtenBy          owl:propertyChainAxiom    ( schema:author schema:author ) .
+
+    ga:publishedBy        owl:propertyChainAxiom    ( schema:publication schema:publishedBy ) .
+    
+    #####################################################
+
+}
