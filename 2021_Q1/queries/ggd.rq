@@ -1,3 +1,12 @@
+#+ summary: Dataset specific query to list all works and their authors, publishers and involved persons (including their role) in the Golden Agents Occasional Poetry dataset (Gelegenheidsgedichten).
+#+ endpoint: https://sparql.goldenagents.org/
+#+ method: GET
+#+ tags:
+#+  - ggd
+#+  - gelegenheidsgedichten
+#+  - stcn
+#+  - nta
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX pnv: <https://w3id.org/pnv#>
