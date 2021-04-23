@@ -1,0 +1,54 @@
+
+####################################################################
+#    Prefixes Mapping
+####################################################################
+
+@prefix      rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>      .
+@prefix     rdfs: <http://www.w3.org/2000/01/rdf-schema#>            .
+@prefix      owl: <http://www.w3.org/2002/07/owl#>                   .
+@prefix   schema: <http://schema.org/>                               .
+@prefix       ga: <https://data.goldenagents.org/ontology/>          .
+@prefix         : <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/> .
+@prefix     void: <http://rdfs.org/ns/void#>                       .
+@prefix    fabio: <http://purl.org/spar/fabio/>                      .
+@prefix     skos: <http://www.w3.org/2004/02/skos/core#>              .
+
+
+
+
+:Ecartico2GA_20201216 {
+
+
+    :Ecartico2GA_20201216  a           fabio:VocabularyMapping ; # a  void:Dataset ?? ;
+      # this mapping envolves ...
+      ## this version of the ontology:
+      void:vocabulary     <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ga_ontology_20201216> ;
+      ## the vocabulary employed in the one used in this version of Ecartico_20190805;
+      void:vocabulary     <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ecartico_20200316_Vocab> ;
+      void:target         <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ecartico_20200316> ;
+      skos:example        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ga-ecartico-onstage-ex1.rq> ,
+                          <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ga-ecartico-onstage-ex2.rq> ;
+      rdfs:seeAlso        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ecartico-onstage-ex1.rq> ,
+                          <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ecartico-onstage-ex2.rq> .
+
+    ####################################################################
+    #    Sub-Classes Mapping
+    ####################################################################
+
+		ga:CreativeAgent     owl:subClassOf            schema:Person        .
+
+		####################################################################
+    #    Equivalent Classes Mapping
+    ####################################################################
+
+		ga:Person            owl:equivalentClass       schema:Person        .
+
+    ####################################################################
+    #    Equivalent Property Mapping
+    ####################################################################
+
+		ga:hasName           owl:equivalentProperty    schema:name            .
+		ga:birthDate         owl:equivalentProperty    schema:birthDate     .
+		ga:deathDate         owl:equivalentProperty    schema:deathDate     .
+
+}

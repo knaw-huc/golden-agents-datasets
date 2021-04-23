@@ -1,0 +1,46 @@
+#+ summary: Query in the Golden Agents ontology to list all works and their authors, publishers and involved persons (including their role) in the Golden Agents Occasional Poetry dataset (Gelegenheidsgedichten).
+#+ endpoint: https://sparql.goldenagents.org/
+#+ method: GET
+#+ tags:
+#+  - ggd
+#+  - gelegenheidsgedichten
+#+  - stcn
+#+  - nta
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ga: <https://data.goldenagents.org/ontology/>
+
+SELECT * WHERE {
+
+  ?book a ga:WritingArtifact ;
+        ga:hasTitle ?title ;
+        ga:writtenBy ?author ;
+        ga:publishedBy|ga:printedBy ?printerOrPublisher ;
+        ga:hasContent/ga:isAbout ?event .
+
+  ?author a ga:Writer ;
+          ga:hasName ?authorName ;
+          ga:hasGender ?authorGender .
+
+  ?publisher a ga:PrinterOrPublisher ;
+             ga:hasName ?publisherName .
+
+  ?event a ga:Event ;
+         ga:hasXSDDate ?eventDate ;
+         rdf:type ?eventType ;
+         ga:participationOf ?person .
+
+  ?role a ga:Role ;
+        ga:carriedAs ?roleType ;
+        ga:carriedBy ?person ;
+        ga:carriedIn ?event .
+
+  ?roleType a ga:RoleType ;
+            rdfs:label ?roleTypeName .
+
+  ?person a ga:Person ;
+          ga:hasName ?personName ;
+          ga:gender ?personGender .
+
+}

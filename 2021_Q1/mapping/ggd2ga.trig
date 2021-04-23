@@ -1,0 +1,140 @@
+
+####################################################################
+#    Prefixes Mapping
+####################################################################
+
+@prefix      rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>      .
+@prefix     rdfs: <http://www.w3.org/2000/01/rdf-schema#>            .
+@prefix      owl: <http://www.w3.org/2002/07/owl#>                   .
+@prefix   schema: <http://schema.org/>                               .
+@prefix       ga: <https://data.goldenagents.org/ontology/>          .
+@prefix         : <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/> .
+@prefix     void: <http://rdfs.org/ns/void#>                         .
+@prefix    fabio: <http://purl.org/spar/fabio/>                      .
+@prefix     skos: <http://www.w3.org/2004/02/skos/core#>             .
+@prefix      sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>         .
+
+:GGD2GA_20210421 {
+
+    :GGD2GA_20210421  a           fabio:VocabularyMapping ;
+      # this version of the ontology:
+      void:vocabulary     <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ga_ontology_20210421> ;
+      # the vocabulary employed in the one used in this version of ggd_tobeuploaded; #Change
+      void:vocabulary     <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ggd_20210408_Vocab> ;
+      void:target         <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b__ggd_20210408> ;
+      skos:example        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ggd-ga.rq> ;
+      rdfs:seeAlso        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ggd.rq> .
+
+    ####################################################################
+    #    Sub-Classes Mapping
+    ####################################################################
+
+    schema:Book          owl:subClassOf            ga:WritingArtifact   .
+
+    ####################################################################
+    #    Equivalent Property Mapping
+    ####################################################################
+
+    ga:birthDate         owl:equivalentProperty    schema:birthDate     .
+    ga:deathDate         owl:equivalentProperty    schema:deathDate     .
+    ga:inLanguage        owl:equivalentProperty    schema:inLanguage    .
+
+    ####################################################################
+    #    SubProperty Mapping
+    ####################################################################
+
+    ga:hasName           rdfs:subPropertyOf        schema:name          . #(domain schema:Person)
+    ga:hasTitle          rdfs:subPropertyOf        schema:name          . #(domain schema:Book)
+
+    ####################################################################
+    #   Property Chain
+    #   Note: for data-properties, propertyChainAxiom works only for
+    #   mapping purposes, since chain reasoning does not work
+    ####################################################################
+    ga:creationDate      owl:propertyChainAxiom    ( schema:publication schema:startDate ) .  # Literal
+    # ga:creationDate owl:equivalentProperty  schema:publication/schema:startDate .
+
+    ga:writtenBy          owl:propertyChainAxiom    ( schema:author schema:author ) .
+    # ga:writtenBy owl:equivalentProperty  schema:author/schema:author .
+
+    #####################################################
+
+    ga:Event                owl:equivalentClass         sem:Event       .
+
+    ga:carriedIn            owl:inverseOf               sem:hasActor    .
+
+    ga:carriedAs            owl:equivalentProperty      sem:roleType    .
+
+    # Very generic, but in theory correct.
+    ga:carriedBy            owl:subPropertyOf           rdf:value       .
+
+    ga:Role                 owl:equivalentClass         sem:Role        .
+
+    ga:RoleType             owl:equivalentClass         sem:RoleType    .
+
+    # In this dataset every schema:Person is a ga:Bearer and a ga:Person
+    schema:Person owl:subClassOf ga:Bearer, ga:Person . 
+
+    # Alternative in OWL for schema:Person entities that are the subject of a sem:Event
+    # ga:Bearer owl:equivalentClass [ a owl:Class ;
+    #                                   owl:unionOf ( schema:Person
+    #                                                 [ 
+    #                                                   rdf:type owl:Restriction ; 
+    #                                                   owl:onProperty [ owl:inverseOf rdf:value ] ; 
+    #                                                   owl:someValuesFrom sem:Role 
+    #                                                 ] 
+    #                                               )
+    #                               ] .
+
+    # This is about book production, thus about ga:Writer. More generic: ga:CreativeAgent. 
+    ga:Writer owl:subClassOf schema:Person .
+
+    # Alternative for ga:Writer in OWL:
+    # ga:Writer owl:equivalentClass [ rdf:type owl:Restriction ; 
+    #                                 owl:onProperty [ owl:inverseOf schema:author ] ; 
+    #                                 owl:someValuesFrom schema:Role ] .
+
+    # For actors in the event
+    ga:participationOf      owl:propertyChainAxiom  ( sem:hasActor rdf:value ) .
+    # ga:participationOf owl:equivalentProperty sem:hasActor/rdf:value
+
+    # In this dataset
+    schema:Organization owl:subClassOf ga:PrinterOrPublisher .
+
+    # The GA ontology has separate classes for Publisher and Printer
+    # ga:publishedBy owl:subPropertyOf schema:publishedBy .
+    # ga:printedBy owl:subPropertyOf schema:publishedBy .
+
+    # The value of this is a ga:PrinterOrPublisher, and there is no property for this.
+    # ga:publishedBy|ga:printedBy owl:propertyChainAxiom ( schema:publication schema:publishedBy) .
+    ga:publishedBy owl:propertyChainAxiom ( schema:publication schema:publishedBy) .
+    ga:printedBy owl:propertyChainAxiom ( schema:publication schema:publishedBy) .
+
+    # Alternative for the class in OWL:
+    # ga:PrinterOrPublisher owl:equivalentClass [ rdf:type owl:Restriction ; 
+    #                                 owl:onProperty [ owl:inverseOf schema:publishedBy ] ; 
+    #                                 owl:someValuesFrom schema:PublicationEvent ] .
+
+    # In the dataset, eventtypes are given as sem:EventType of a sem:Event. 
+    # In GA the eventType is also the instance's type. (not yet in ontology) 
+    # ga:Marriage owl:subClassOf ga:GroupEvent ;
+    #             owl:equivalentClass [ rdf:type owl:Restriction ; 
+    #                                   owl:onProperty sem:eventType ; 
+    #                                   owl:hasValue <https://data.goldenagents.org/datasets/thesaurus/eventtype/huwelijk> ] .
+
+    ga:hasGender owl:equivalentProperty schema:gender .
+
+    # This propertychain is the other way round, compared to the ones above. 
+    # This is due to the fact that there exist no separate resources in this 
+    # dataset on the content of the book that can be mapped to ga:Story or ga:Idea. 
+    schema:about owl:propertyChainAxiom  ( ga:hasContent ga:isAbout ) .
+    # schema:about owl:equivalentProperty ga:hasContent/ga:isAbout
+
+    ga:hasXSDDate owl:equivalentProperty sem:hasTimeStamp .
+
+    # For the NTA (the author's part)
+    owl:sameAs owl:equivalentProperty schema:sameAs .
+
+
+}
+

@@ -1,0 +1,95 @@
+#+ summary: How many plays were made and performed during a playwriter's life? How many works of this author are listed in the STCN? And how many unique printer/publishers are involved in the publication?
+#+ endpoint: https://sparql.goldenagents.org/
+#+ method: GET
+#+ tags:
+#+  - ecartico
+#+  - onstage
+#+  - stcn
+#+  - linkset
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# How many plays were made and performed during a playwriter's life?
+# How many works of this author are listed in the STCN?
+# And how many unique printer/publishers are involved in the publication?
+# Using: ECARTICO + ONSTAGE + STCN
+# 2020-12-08
+# Expected rows: 10
+
+SELECT DISTINCT
+	?name
+	?birthYear
+	(min(?performanceDate) as ?firstPerformanceAlive)
+	(max(?performanceDate) as ?lastPerformanceAlive)
+	?deathYear
+	(COUNT(DISTINCT ?work) as ?works)
+    (COUNT(DISTINCT ?show) as ?shows)
+	(COUNT(DISTINCT ?performingEvent) as ?performances)
+	(COUNT(DISTINCT ?otherWork) as ?otherWorks)
+	(COUNT(DISTINCT ?printerSTCN) as ?uniquePrinters)
+WHERE {
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ecartico_20200316> {
+
+    # Biographic info
+		?personEcartico a schema:Person ;
+  			schema:name ?name ;
+            schema:birthDate ?birthDate ;
+            schema:deathDate ?deathDate .
+
+    # Find a match in the STCN (NTA)
+    	OPTIONAL { ?personEcartico schema:sameAs ?authorSTCN . }
+
+    # Some birthDate and deathDate values are resources (schema:StructuredValue). Filter those out.
+        FILTER (!ISURI(?birthDate) && !ISURI(?deathDate))
+        FILTER (DATATYPE(?birthDate) = xsd:date)  # please, format all dates in xsd:date...
+        FILTER (DATATYPE(?deathDate) = xsd:date)  # please, format all dates in xsd:date...
+
+    # Some birthDate and deathDate values are of type xsd:gYear. Cast them to integer.
+      BIND(IF(DATATYPE(?birthDate) = xsd:date, year(?birthDate), xsd:integer(substr(str(?birthDate), 1, 4))) as ?birthYear)
+      BIND(IF(DATATYPE(?deathDate) = xsd:date, year(?deathDate), xsd:integer(substr(str(?deathDate), 1, 4))) as ?deathYear)
+	}
+
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/onstage_20200316> {
+		?personOnstage a schema:Person .
+
+    # A work is written by a person.
+    	?work schema:creator ?personOnstage .
+
+    # A performance is played on a date and has one or multiple subevents.
+        ?show schema:startDate ?performanceDate ;
+              schema:subEvent ?performingEvent .
+
+    # The play is based on the work.
+        ?performingEvent schema:workPerformed ?work .
+  }
+
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/stcn_20200226> {
+    # How many works (including the play above) has this author published and listed in the STCN?
+    	?otherWork a schema:Book ;
+  				   schema:author/schema:author ?authorSTCN .
+
+    # Optionally, get the number of unique printers of all these plays
+        OPTIONAL { ?otherWork schema:publication/schema:publishedBy ?printerSTCN . }
+  }
+
+  # Only performances during a person's life
+  FILTER(year(?performanceDate) <= ?deathYear)
+
+  GRAPH ?linkset {
+    {
+      ?personOnstage ?link ?personEcartico
+    } UNION {
+      ?personEcartico ?link ?personOnstage
+    }
+  }
+
+  FILTER(?linkset = <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/linkset_ecartico_onstage_sameas_including_external_links_20190218> ||
+         ?linkset = <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/linkset_onstage_ecartico_sameas_20190218> )
+
+}
+
+GROUP BY ?personEcartico ?name ?birthYear ?deathYear ?deathDate
+ORDER BY ?name
