@@ -9,11 +9,11 @@
 
 ## Datasets Named Graphs
 
-1. [ ] Collection 5001: </br> <>
+1. [x] Collection 5001: </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ead_5001_xml_20210712>
 2. [ ] Index op Doopregisters </br> <>
 3. [ ] Index op Ondertrouwregisters: </br> <>
 4. [ ] Index op Begraafregisters: </br> <>
-5. [ ] Ja, ik wil!: </br> <>
+5. [x] Ja, ik wil!: </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ja_ik_wil_20210712>
 
 ## Mappings Named Graphs
 
