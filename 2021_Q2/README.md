@@ -10,9 +10,9 @@
 ## Datasets Named Graphs
 
 1. [x] Collection 5001: </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ead_5001_xml_20210712>
-2. [ ] Index op Doopregisters </br> <>
-3. [ ] Index op Ondertrouwregisters: </br> <>
-4. [ ] Index op Begraafregisters: </br> <>
+2. [x] Index op Doopregisters </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_002_index_op_doopregisters>
+3. [x] Index op Ondertrouwregisters: </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_003_index_op_ondertrouwregisters>
+4. [x] Index op Begraafregisters: </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_008_index_op_begraafregisters_voor_1811>
 5. [x] Ja, ik wil!: </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ja_ik_wil_20210712>
 
 ## Mappings Named Graphs
@@ -21,7 +21,7 @@
 
 ## SPARQL Queries 
 
-1. [ ] GGD: </br> 
+1. [ ] DTB: </br> 
 Queries can be found in this folder: </br> 
 <https://github.com/knaw-huc/golden-agents-datasets/tree/develop/2021_Q2/queries> </br>
 Or here: </br>
