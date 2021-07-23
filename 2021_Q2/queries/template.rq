@@ -1,0 +1,44 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX roar: <https://data.goldenagents.org/ontology/roar/>
+
+SELECT * WHERE {
+
+  # 5001
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ead_5001_xml_20210712> {
+
+  }
+
+  # Doop
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_002_index_op_doopregisters> {
+	?personDP a roar:Person .
+  }
+
+  # Ondertrouw
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_003_index_op_ondertrouwregisters> {
+	?personOTR a roar:Person .
+  }
+
+  # Begraafregisters
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_008_index_op_begraafregisters_voor_1811> {
+	?personBG a roar:Person .
+  }
+
+  # Ja, ik wil
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ja_ik_wil_20210712> {
+#    ?personJIW a roar:Person .
+  }
+
+  # Linkset sameAs DTB-Ecartico
+  GRAPH <https://data.goldenagents.org/datasets/u692bc364e9d7fa97b3510c6c0c8f2bb9a0e5123b/dtb_linkset_1_20210723> {
+    ?personDP owl:sameAs ?personOTR , ?personBG .
+  }
+
+  # Linkset OTR-JIW
+#  GRAPH <> {
+#    ?personJIW owl:sameAs ?personOTR .
+#  }
+
+} LIMIT 100
