@@ -15,13 +15,19 @@
 4. [x] Index op Begraafregisters: </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_008_index_op_begraafregisters_voor_1811>
 5. [x] Ja, ik wil!: </br> <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ja_ik_wil_20210712>
 
+## Linksets Named Graphs
+
+1. dtb_linkset_1_20210723: `owl:sameAs` version
+2. dtb_linkset_2_20210723: `roar` version
+3.
+
 ## Mappings Named Graphs
 
 1. [ ] ROAR to GA: </br> <>
 
-## SPARQL Queries 
+## SPARQL Queries
 
-1. [ ] DTB: </br> 
-Queries can be found in this folder: </br> 
+1. [ ] DTB: </br>
+Queries can be found in this folder: </br>
 <https://github.com/knaw-huc/golden-agents-datasets/tree/develop/2021_Q2/queries> </br>
 Or here: </br>
