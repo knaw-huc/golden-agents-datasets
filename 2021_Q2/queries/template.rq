@@ -37,8 +37,8 @@ SELECT * WHERE {
   }
 
   # Linkset OTR-JIW
-#  GRAPH <> {
-#    ?personJIW owl:sameAs ?personOTR .
-#  }
+ GRAPH <https://data.goldenagents.org/datasets/u692bc364e9d7fa97b3510c6c0c8f2bb9a0e5123b/jiw_otr_linkset_20210727> {
+   ?personJIW owl:sameAs ?personOTR .
+ }
 
 } LIMIT 100
