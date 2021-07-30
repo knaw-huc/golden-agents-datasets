@@ -1,0 +1,489 @@
+@prefix : <https://data.goldenagents.org/ontology#> .
+@prefix ga: <https://data.goldenagents.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://data.goldenagents.org/ontology> .
+
+<https://data.goldenagents.org/ontology> rdf:type owl:Ontology ;
+                                          <http://purl.org/vocab/vann/preferredNamespacePrefix> "ga"^^rdfs:Literal ;
+                                          rdfs:label "Golden Agents Ontology"^^rdfs:Literal ;
+                                          owl:versionInfo "0.5"^^rdfs:Literal .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://data.goldenagents.org/ontology/authorOf
+ga:authorOf rdf:type owl:ObjectProperty ;
+            owl:inverseOf ga:authoredBy ;
+            rdfs:domain ga:Author ;
+            rdfs:range ga:Idea .
+
+
+###  https://data.goldenagents.org/ontology/authoredBy
+ga:authoredBy rdf:type owl:ObjectProperty ;
+              rdfs:domain ga:Idea ;
+              rdfs:range ga:Author .
+
+
+###  https://data.goldenagents.org/ontology/carriedAs
+ga:carriedAs rdf:type owl:ObjectProperty ;
+             rdfs:domain ga:Role ;
+             rdfs:range ga:RoleType .
+
+
+###  https://data.goldenagents.org/ontology/carriedBy
+ga:carriedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain ga:Role ;
+             rdfs:range ga:Bearer .
+
+
+###  https://data.goldenagents.org/ontology/carriedIn
+ga:carriedIn rdf:type owl:ObjectProperty ;
+             rdfs:domain ga:Role ;
+             rdfs:range ga:Event .
+
+
+###  https://data.goldenagents.org/ontology/depicts
+ga:depicts rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  https://data.goldenagents.org/ontology/hasContent
+ga:hasContent rdf:type owl:ObjectProperty ;
+              rdfs:domain ga:CreativeArtifact ;
+              rdfs:range ga:Idea .
+
+
+###  https://data.goldenagents.org/ontology/hasGender
+ga:hasGender rdf:type owl:ObjectProperty ;
+             rdfs:domain ga:Person .
+
+
+###  https://data.goldenagents.org/ontology/isAbout
+ga:isAbout rdf:type owl:ObjectProperty ;
+           rdfs:domain ga:Idea .
+
+
+###  https://data.goldenagents.org/ontology/isPrintedAs
+ga:isPrintedAs rdf:type owl:ObjectProperty ;
+               owl:inverseOf ga:isPrintingOf ;
+               rdfs:domain ga:Idea ;
+               rdfs:range ga:PrintingArtifact .
+
+
+###  https://data.goldenagents.org/ontology/isPrintingOf
+ga:isPrintingOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf ga:hasContent .
+
+
+###  https://data.goldenagents.org/ontology/manifestationOf
+ga:manifestationOf rdf:type owl:ObjectProperty ;
+                   rdfs:domain ga:Participation ;
+                   rdfs:range ga:RoleType .
+
+
+###  https://data.goldenagents.org/ontology/mentions
+ga:mentions rdf:type owl:ObjectProperty .
+
+
+###  https://data.goldenagents.org/ontology/mentionsBaptised
+ga:mentionsBaptised rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf ga:mentions ;
+                    rdfs:domain ga:BaptismCertificate ;
+                    rdfs:range ga:BaptisedPerson .
+
+
+###  https://data.goldenagents.org/ontology/mentionsParent
+ga:mentionsParent rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf ga:mentions ;
+                  rdfs:domain ga:BaptismCertificate ;
+                  rdfs:range ga:Person .
+
+
+###  https://data.goldenagents.org/ontology/paintedBy
+ga:paintedBy rdf:type owl:ObjectProperty ;
+             owl:inverseOf ga:painterOf .
+
+
+###  https://data.goldenagents.org/ontology/painterOf
+ga:painterOf rdf:type owl:ObjectProperty ;
+             rdfs:domain ga:Painter ;
+             rdfs:range ga:Painting .
+
+
+###  https://data.goldenagents.org/ontology/participatesIn
+ga:participatesIn rdf:type owl:ObjectProperty ;
+                  owl:inverseOf ga:participationOf ;
+                  rdfs:domain ga:Bearer ;
+                  rdfs:range ga:Event .
+
+
+###  https://data.goldenagents.org/ontology/participationOf
+ga:participationOf rdf:type owl:ObjectProperty ;
+                   rdfs:domain ga:Event ;
+                   rdfs:range ga:Bearer .
+
+
+###  https://data.goldenagents.org/ontology/performanceOf
+ga:performanceOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 owl:inverseOf ga:performedAs ;
+                 rdfs:domain ga:CreativeAct ;
+                 rdfs:range ga:Idea .
+
+
+###  https://data.goldenagents.org/ontology/performedAs
+ga:performedAs rdf:type owl:ObjectProperty ;
+               rdfs:domain ga:Idea ;
+               rdfs:range ga:CreativeAct .
+
+
+###  https://data.goldenagents.org/ontology/printedBy
+ga:printedBy rdf:type owl:ObjectProperty ;
+             owl:inverseOf ga:printerOf .
+
+
+###  https://data.goldenagents.org/ontology/printerOf
+ga:printerOf rdf:type owl:ObjectProperty ;
+             rdfs:domain ga:Printer ;
+             rdfs:range ga:PrintingArtifact .
+
+
+###  https://data.goldenagents.org/ontology/publishedBy
+ga:publishedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain ga:WritingArtifact ;
+               rdfs:range ga:Publisher .
+
+
+###  https://data.goldenagents.org/ontology/publisherOf
+ga:publisherOf rdf:type owl:ObjectProperty ;
+               rdfs:domain ga:Publisher ;
+               rdfs:range ga:WritingArtifact .
+
+
+###  https://data.goldenagents.org/ontology/subEventOf
+ga:subEventOf rdf:type owl:ObjectProperty ;
+              rdfs:domain ga:Event ;
+              rdfs:range ga:Event .
+
+
+###  https://data.goldenagents.org/ontology/writerOf
+ga:writerOf rdf:type owl:ObjectProperty ;
+            owl:inverseOf ga:writtenBy ;
+            rdfs:domain ga:Writer ;
+            rdfs:range ga:WritingArtifact .
+
+
+###  https://data.goldenagents.org/ontology/writtenBy
+ga:writtenBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://data.goldenagents.org/ontology/birthDate
+ga:birthDate rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/creationDate
+ga:creationDate rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/deathDate
+ga:deathDate rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/endDate
+ga:endDate rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/hasEarliestBeginXSDDate
+ga:hasEarliestBeginXSDDate rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/hasLatestEndXSDDate
+ga:hasLatestEndXSDDate rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/hasMatch
+ga:hasMatch rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/hasName
+ga:hasName rdf:type owl:DatatypeProperty ;
+           owl:propertyDisjointWith ga:hasTitle .
+
+
+###  https://data.goldenagents.org/ontology/hasTitle
+ga:hasTitle rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  https://data.goldenagents.org/ontology/hasXSDDate
+ga:hasXSDDate rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/inLanguage
+ga:inLanguage rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/registrationDate
+ga:registrationDate rdf:type owl:DatatypeProperty .
+
+
+###  https://data.goldenagents.org/ontology/startDate
+ga:startDate rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://data.goldenagents.org/ontology/Author
+ga:Author rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty ga:authorOf ;
+                                owl:someValuesFrom ga:Idea
+                              ] ;
+          rdfs:subClassOf ga:CreativeAgent .
+
+
+###  https://data.goldenagents.org/ontology/BaptisedPerson
+ga:BaptisedPerson rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty [ owl:inverseOf ga:mentionsBaptised
+                                                       ] ;
+                                        owl:someValuesFrom ga:BaptismCertificate
+                                      ] ;
+                  rdfs:subClassOf ga:Person .
+
+
+###  https://data.goldenagents.org/ontology/BaptismCertificate
+ga:BaptismCertificate rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty ga:mentionsBaptised ;
+                                            owl:someValuesFrom ga:Person
+                                          ] ;
+                      rdfs:subClassOf ga:Record .
+
+
+###  https://data.goldenagents.org/ontology/Bearer
+ga:Bearer rdf:type owl:Class ;
+          rdfs:subClassOf ga:Endurant .
+
+
+###  https://data.goldenagents.org/ontology/Book
+ga:Book rdf:type owl:Class ;
+        rdfs:subClassOf ga:WritingArtifact .
+
+
+###  https://data.goldenagents.org/ontology/CreativeAct
+ga:CreativeAct rdf:type owl:Class ;
+               rdfs:subClassOf ga:Event .
+
+
+###  https://data.goldenagents.org/ontology/CreativeAgent
+ga:CreativeAgent rdf:type owl:Class ;
+                 rdfs:subClassOf ga:Substantial .
+
+
+###  https://data.goldenagents.org/ontology/CreativeArtifact
+ga:CreativeArtifact rdf:type owl:Class ;
+                    rdfs:subClassOf ga:Substantial ;
+                    owl:disjointWith ga:Idea .
+
+
+###  https://data.goldenagents.org/ontology/Endurant
+ga:Endurant rdf:type owl:Class .
+
+
+###  https://data.goldenagents.org/ontology/Event
+ga:Event rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ga:participationOf ;
+                               owl:someValuesFrom ga:Substantial
+                             ] .
+
+
+###  https://data.goldenagents.org/ontology/GroupEvent
+ga:GroupEvent rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ga:participationOf ;
+                                    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass ga:Person
+                                  ] ;
+              rdfs:subClassOf ga:Event .
+
+
+###  https://data.goldenagents.org/ontology/Idea
+ga:Idea rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf ga:authorOf
+                                             ] ;
+                              owl:someValuesFrom ga:Author
+                            ] ;
+        rdfs:subClassOf ga:Endurant .
+
+
+###  https://data.goldenagents.org/ontology/Illustration
+ga:Illustration rdf:type owl:Class ;
+                rdfs:subClassOf ga:CreativeArtifact .
+
+
+###  https://data.goldenagents.org/ontology/Organization
+ga:Organization rdf:type owl:Class ;
+                rdfs:subClassOf ga:Substantial .
+
+
+###  https://data.goldenagents.org/ontology/Painter
+ga:Painter rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ga:painterOf ;
+                                 owl:someValuesFrom ga:Painting
+                               ] ;
+           rdfs:subClassOf ga:CreativeAgent .
+
+
+###  https://data.goldenagents.org/ontology/Painting
+ga:Painting rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf ga:painterOf
+                                                 ] ;
+                                  owl:someValuesFrom ga:Painter
+                                ] ;
+            rdfs:subClassOf ga:Illustration ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ga:depicts ;
+                              owl:someValuesFrom ga:Scene
+                            ] .
+
+
+###  https://data.goldenagents.org/ontology/Participation
+ga:Participation rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty ga:participationOf ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass ga:Substantial
+                                     ] ;
+                 rdfs:subClassOf ga:Event .
+
+
+###  https://data.goldenagents.org/ontology/Person
+ga:Person rdf:type owl:Class ;
+          rdfs:subClassOf ga:Substantial .
+
+
+###  https://data.goldenagents.org/ontology/Printer
+ga:Printer rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ga:printerOf ;
+                                 owl:someValuesFrom ga:PrintingArtifact
+                               ] ;
+           rdfs:subClassOf ga:PrinterOrPublisher .
+
+
+###  https://data.goldenagents.org/ontology/PrinterOrPublisher
+ga:PrinterOrPublisher rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Class ;
+                                            owl:unionOf ( ga:Printer
+                                                          ga:Publisher
+                                                        )
+                                          ] ;
+                      rdfs:subClassOf ga:CreativeAgent .
+
+
+###  https://data.goldenagents.org/ontology/PrintingArtifact
+ga:PrintingArtifact rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty [ owl:inverseOf ga:printerOf
+                                                         ] ;
+                                          owl:someValuesFrom ga:Printer
+                                        ] ;
+                    rdfs:subClassOf ga:CreativeArtifact ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ga:isPrintingOf ;
+                                      owl:someValuesFrom ga:Story
+                                    ] .
+
+
+###  https://data.goldenagents.org/ontology/Publisher
+ga:Publisher rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty ga:publisherOf ;
+                                   owl:someValuesFrom ga:WritingArtifact
+                                 ] ;
+             rdfs:subClassOf ga:PrinterOrPublisher .
+
+
+###  https://data.goldenagents.org/ontology/Record
+ga:Record rdf:type owl:Class ;
+          rdfs:subClassOf ga:Substantial .
+
+
+###  https://data.goldenagents.org/ontology/Role
+ga:Role rdf:type owl:Class ;
+        rdfs:subClassOf ga:Endurant .
+
+
+###  https://data.goldenagents.org/ontology/RoleType
+ga:RoleType rdf:type owl:Class .
+
+
+###  https://data.goldenagents.org/ontology/Scene
+ga:Scene rdf:type owl:Class ;
+         rdfs:subClassOf ga:Idea .
+
+
+###  https://data.goldenagents.org/ontology/Story
+ga:Story rdf:type owl:Class ;
+         rdfs:subClassOf ga:Idea .
+
+
+###  https://data.goldenagents.org/ontology/Substantial
+ga:Substantial rdf:type owl:Class ;
+               rdfs:subClassOf ga:Endurant .
+
+
+###  https://data.goldenagents.org/ontology/TheatrePerformance
+ga:TheatrePerformance rdf:type owl:Class ;
+                      rdfs:subClassOf ga:CreativeAct .
+
+
+###  https://data.goldenagents.org/ontology/TheatrePlay
+ga:TheatrePlay rdf:type owl:Class ;
+               rdfs:subClassOf ga:WritingArtifact .
+
+
+###  https://data.goldenagents.org/ontology/Writer
+ga:Writer rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty ga:writerOf ;
+                                owl:someValuesFrom ga:WritingArtifact
+                              ] ;
+          rdfs:subClassOf ga:CreativeAgent .
+
+
+###  https://data.goldenagents.org/ontology/WritingArtifact
+ga:WritingArtifact rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf ga:writerOf
+                                                        ] ;
+                                         owl:someValuesFrom ga:Writer
+                                       ] ;
+                   rdfs:subClassOf ga:CreativeArtifact .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
