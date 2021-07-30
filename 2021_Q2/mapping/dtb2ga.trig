@@ -114,39 +114,39 @@
 
     thes:Doop            owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Doop ] .
+                                               owl:hasValue thes:Doop ] .
 
     thes:Ondertrouw      owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Begraven ] .
+                                               owl:hasValue thes:Begraven ] .
     
     thes:Begraven        owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Begraven ] .
+                                               owl:hasValue thes:Begraven ] .
 
     thes:Bruidegom       owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Bruidegom ] .
+                                               owl:hasValue thes:Bruidegom ] .
 
     thes:Bruid       owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Bruid ] .
+                                               owl:hasValue thes:Bruid ] .
 
     thes:Vader       owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Vader ] .
+                                               owl:hasValue thes:Vader ] .
 
     thes:Moeder       owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Moeder ] .
+                                               owl:hasValue thes:Moeder ] .
 
     thes:Kind       owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Kind ] .                                                                                                                                             
+                                               owl:hasValue thes:Kind ] .                                                                                                                                             
 
     thes:Getuige       owl:equivalentClass [ a owl:Restriction ; 
                                                owl:onProperty ga:hasType ; 
-                                               owl:someValuesFrom thes:Getuige ] .    
+                                               owl:hasValue thes:Getuige ] .    
 
     # Or, does this also work?
     ga:hasType owl:equivalentProperty rdf:type .   # ?
