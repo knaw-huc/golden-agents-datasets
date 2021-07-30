@@ -148,6 +148,18 @@
                                                owl:onProperty ga:hasType ; 
                                                owl:hasValue thes:Getuige ] .    
 
+    thes:DtbDopen       owl:equivalentClass [ a owl:Restriction ; 
+                                               owl:onProperty ga:hasType ; 
+                                               owl:hasValue thes:DtbDopen ] .   
+
+    thes:Ondertrouwregister       owl:equivalentClass [ a owl:Restriction ; 
+                                               owl:onProperty ga:hasType ; 
+                                               owl:hasValue thes:Ondertrouwregister ] .   
+
+    thes:DtbBegraven       owl:equivalentClass [ a owl:Restriction ; 
+                                               owl:onProperty ga:hasType ; 
+                                               owl:hasValue thes:DtbBegraven ] .                                                  
+
     # Or, does this also work?
     ga:hasType owl:equivalentProperty rdf:type .   # ?
 
