@@ -161,7 +161,7 @@
                                                owl:hasValue thes:DtbBegraven ] .                                                  
 
     # Or, does this also work?
-    ga:hasType owl:equivalentProperty rdf:type .   # ?
+    ga:hasType rdfs:subPropertyOf rdf:type .   # ?
 
     ga:hasXSDDate owl:equivalentProperty sem:hasTimeStamp .
 
