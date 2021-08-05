@@ -20,42 +20,29 @@ SELECT ?eventOTR ?eventDP ?father ?mother ?child ((?dateDP - ?dateOTR)/86400 AS 
   ?personChild a ga:Person ;
     ga:hasName ?child .
 
-#   ?recordOTR a ga:Record ;
-#     ga:hasType THESAURUS .
-    
-#   ?recordDP a ga:Record ;
-#     ga:hasType THESAURUS .
-
-  ?eventOTR a ga:Event ;
-    ga:hasType thes:Ondertrouw ;
+  ?eventOTR a thes:Ondertrouw ;
     ga:hasXSDDate ?dateOTR .
 
-  ?eventDP a ga:Event ;
-    ga:hasType thes:Doop ;
+  ?eventDP a thes:Doop ;
     ga:hasXSDDate ?dateDP .
 
-  ?bruidegom a ga:Role ;
-    ga:hasType thes:Bruidegom ;
+  ?bruidegom a thes:Bruidegom ;
     ga:carriedBy ?personMale ;
     ga:carriedIn ?eventOTR .
 
-  ?bruid a ga:Role ;
-    ga:hasType thes:Bruid ;
+  ?bruid a thes:Bruid ;
     ga:carriedBy ?personFemale ;
     ga:carriedIn ?eventOTR .
 
-  ?vader a ga:Role ;
-    ga:hasType thes:Vader ;
+  ?vader a thes:Vader ;
     ga:carriedBy ?personMale ;
     ga:carriedIn ?eventDP .
 
-  ?moeder a ga:Role ;
-    ga:hasType thes:Moeder ;
+  ?moeder a thes:Moeder;
     ga:carriedBy ?personFemale ;
     ga:carriedIn ?eventDP .
 
-  ?kind a ga:Role ;
-    ga:hasType thes:Kind ;
+  ?kind a thes:Kind ;
     ga:carriedBy ?personChild ;
     ga:carriedIn ?eventDP .
 

@@ -14,32 +14,22 @@ SELECT ?personX ?dateOTR ?dateBG ?person (?dateBGint - YEAR(?dateOTR) as ?years)
   ?personX a ga:Person ;
     ga:hasName ?person .
 
-  # ?recordOTR a ga:Record ;
-  #   ga:hasType THESAURUS .
-    
-  # ?recordBG a ga:Record ;
-  #   ga:hasType THESAURUS .
-
-  ?eventOTR a ga:Event ;
-    ga:hasType thes:Ondertrouw ;
+  ?eventOTR a thes:Ondertrouw ;
     ga:hasXSDDate ?dateOTR .
 
-  ?eventBG a ga:Event ;
-    ga:hasType thes:Begraven ;
+  ?eventBG a thes:Begraven ;
     ga:hasXSDDate ?dateBG .
 
   # Fix for faulty timestamps
   BIND(xsd:integer(SUBSTR(STR(?dateBG), 0, 4)) as ?dateBGint)
 
-  ?partner a ga:Role ;
-    ga:hasType ?partnerType ;
+  ?partner a ?partnerType ;
     ga:carriedBy ?personX ;
     ga:carriedIn ?eventOTR .
 
   FILTER(?partnerType = thes:Bruidegom || ?partnerType = thes:Bruid)
 
-  ?geregistreerde a ga:Role ;
-    ga:hasType thes:Geregistreerde ;
+  ?geregistreerde a thes:Geregistreerde ;
     ga:carriedBy ?personX ;
     ga:carriedIn ?eventBG .
 
