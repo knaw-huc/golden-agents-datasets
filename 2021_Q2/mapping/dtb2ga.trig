@@ -94,12 +94,12 @@
     roar:RoleType        owl:equivalentClass       ga:RoleType .
 
     roar:Event           owl:equivalentClass       ga:Event .
-    roar:EventType       owl:equivalentClass       ga:EventType . # not in ontology
+    roar:EventType       owl:equivalentClass       ga:EventType .
     
     roar:RegistrationEvent owl:subClassOf          ga:Event .
 
     roar:Document        owl:equivalentClass       ga:Record .
-    roar:DocumentType    owl:equivalentClass       ga:RecordType . # not in ontology
+    roar:DocumentType    owl:equivalentClass       ga:RecordType .
 
     roar:participatesIn  owl:equivalentProperty    ga:participatesIn .
     roar:carriedIn       owl:equivalentProperty    ga:carriedIn .
@@ -111,57 +111,6 @@
     # thes:Doop            owl:subClassOf            ga:Event . # Already defined above
     # thes:Ondertrouw      owl:subClassOf            ga:Event . # Already defined above
     # thes:Begraven        owl:subClassOf            ga:Event . # Already defined above
-
-    thes:Doop            owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Doop ] .
-
-    thes:Ondertrouw      owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Begraven ] .
-    
-    thes:Begraven        owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Begraven ] .
-
-    thes:Bruidegom       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Bruidegom ] .
-
-    thes:Bruid       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Bruid ] .
-
-    thes:Vader       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Vader ] .
-
-    thes:Moeder       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Moeder ] .
-
-    thes:Kind       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Kind ] .                                                                                                                                             
-
-    thes:Getuige       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Getuige ] .    
-
-    thes:DtbDopen       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:DtbDopen ] .   
-
-    thes:Ondertrouwregister       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:Ondertrouwregister ] .   
-
-    thes:DtbBegraven       owl:equivalentClass [ a owl:Restriction ; 
-                                               owl:onProperty ga:hasType ; 
-                                               owl:hasValue thes:DtbBegraven ] .                                                  
-
-    # Or, does this also work?
-    ga:hasType rdfs:subPropertyOf rdf:type .   # ?
 
     ga:hasXSDDate owl:equivalentProperty sem:hasTimeStamp .
 

@@ -318,6 +318,11 @@ ga:Event rdf:type owl:Class ;
                              ] .
 
 
+###  https://data.goldenagents.org/ontology/EventType
+ga:EventType rdf:type owl:Class ;
+             rdfs:subClassOf ga:Type .
+
+
 ###  https://data.goldenagents.org/ontology/GroupEvent
 ga:GroupEvent rdf:type owl:Class ;
               owl:equivalentClass [ rdf:type owl:Restriction ;
@@ -433,13 +438,19 @@ ga:Record rdf:type owl:Class ;
           rdfs:subClassOf ga:Substantial .
 
 
+###  https://data.goldenagents.org/ontology/RecordType
+ga:RecordType rdf:type owl:Class ;
+              rdfs:subClassOf ga:Type .
+
+
 ###  https://data.goldenagents.org/ontology/Role
 ga:Role rdf:type owl:Class ;
         rdfs:subClassOf ga:Endurant .
 
 
 ###  https://data.goldenagents.org/ontology/RoleType
-ga:RoleType rdf:type owl:Class .
+ga:RoleType rdf:type owl:Class ;
+            rdfs:subClassOf ga:Type .
 
 
 ###  https://data.goldenagents.org/ontology/Scene
@@ -465,6 +476,10 @@ ga:TheatrePerformance rdf:type owl:Class ;
 ###  https://data.goldenagents.org/ontology/TheatrePlay
 ga:TheatrePlay rdf:type owl:Class ;
                rdfs:subClassOf ga:WritingArtifact .
+
+
+###  https://data.goldenagents.org/ontology/Type
+ga:Type rdf:type owl:Class .
 
 
 ###  https://data.goldenagents.org/ontology/Writer
