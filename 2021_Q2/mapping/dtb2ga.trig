@@ -14,26 +14,63 @@
 @prefix     skos: <http://www.w3.org/2004/02/skos/core#>             .
 @prefix      sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>         .
 @prefix      pnv: <https://w3id.org/pnv#>                            .
+@prefix     roar: <https://data.goldenagents.org/ontology/roar/>     .
 @prefix     thes: <https://data.goldenagents.org/thesaurus/>         .
 
-:DTB2GA_20210730 {
+:dtb2ga_20210730 {
 
-    :DTB2GA_20210730  a           fabio:VocabularyMapping ;
+    <https://data.goldenagents.org/datasets/u692bc364e9d7fa97b3510c6c0c8f2bb9a0e5123b/dtb2ga_20210730>  a           fabio:VocabularyMapping ;
       # this version of the ontology:
-      void:vocabulary     <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ga_ontology_20210730> ;
-      # the vocabulary employed in the one used in this version of ggd_tobeuploaded; #Change
-      void:vocabulary     <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/ggd_20210408_Vocab> ; # CHANGE
-      void:target         <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b__ggd_20210408> ; # CHANGE
-      skos:example        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ggd-ga.rq> ;  # CHANGE
-      rdfs:seeAlso        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ggd.rq> . # CHANGE
+      void:vocabulary     <https://data.goldenagents.org/datasets/u692bc364e9d7fa97b3510c6c0c8f2bb9a0e5123b/ga_ontology_20210730> ;
+      # the vocabulary employed in the one used in this version of DTB;
+      void:vocabulary     <https://data.goldenagents.org/datasets/u692bc364e9d7fa97b3510c6c0c8f2bb9a0e5123b/dtb_20210730_Vocab> ;
+      void:target         :saa_id_002_index_op_doopregisters, 
+        :saa_id_003_index_op_ondertrouwregisters, 
+        :saa_id_008_index_op_begraafregisters_voor_1811, 
+        :ja_ik_wil_20210712 ;
+      skos:example        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ga_ondertrouw_begraaf_years.rq>, 
+        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ga_ondertrouw_doop_days.rq> ;
+      rdfs:seeAlso        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ondertrouw_begraaf_years.rq>, 
+        <https://raw.githubusercontent.com/knaw-huc/golden-agents-queries/master/ondertrouw_doop_days.rq> .
 
     #####################################################################
-    # ROAR++
+    # ROAR++ Ontology and Thesaurus part
     #####################################################################
+
+    # Ontology: Event
+    roar:Event a owl:Class .
+    roar:EventType a owl:Class .
+
+    roar:RegistrationEvent a owl:Class;
+        rdfs:subClassOf roar:Event .
+    roar:RegistrationEventType a owl:Class;
+        rdfs:subClassOf roar:EventType .
+
+    # Ontology: Document
+    roar:Document a owl:Class .
+    roar:DocumentType a owl:Class .
+
+    # Ontology: Role
+    roar:Role a owl:Class .
+    roar:RoleType a owl:Class .
+
+    # Thesaurus: EventTypes
+    thes:Doop a roar:EventType ;
+        rdfs:label "Doop" ;
+        rdfs:subClassOf roar:RegistrationEvent .
+
+    thes:Ondertrouw a roar:EventType ;
+        rdfs:label "Ondertrouw" ;
+        rdfs:subClassOf roar:RegistrationEvent .
 
     thes:Begraven a roar:EventType ;
         rdfs:label "Begraven" ;
         rdfs:subClassOf roar:RegistrationEvent .
+
+    # Thesaurus: RoleTypes
+    thes:Geregistreerde a roar:RoleType ;
+        rdfs:label "Geregistreerde" ;
+        rdfs:subClassOf roar:Role .
 
     thes:Bruid a roar:RoleType ;
         rdfs:label "Bruid" ;
@@ -43,46 +80,34 @@
         rdfs:label "Bruidegom" ;
         rdfs:subClassOf roar:Role .
 
-    thes:Doop a roar:EventType ;
-        rdfs:label "Doop" ;
-        rdfs:subClassOf roar:RegistrationEvent .
-
-    thes:DtbBegraven a roar:DocumentType ;
-        rdfs:label "DTB Begraven" ;
-        rdfs:subClassOf roar:Document .
-
-    thes:DtbDopen a roar:DocumentType ;
-        rdfs:label "DTB Dopen" ;
-        rdfs:subClassOf roar:Document .
-
-    thes:Geregistreerde a roar:RoleType ;
-        rdfs:label "Geregistreerde" ;
-        rdfs:subClassOf roar:Role .
-
     thes:Getuige a roar:RoleType ;
         rdfs:label "Getuige" ;
         rdfs:subClassOf roar:Role .
 
-    thes:Kind a roar:RoleType ;
-        rdfs:label "Kind" ;
+    thes:Vader a roar:RoleType ;
+        rdfs:label "Vader" ;
         rdfs:subClassOf roar:Role .
 
     thes:Moeder a roar:RoleType ;
         rdfs:label "Moeder" ;
         rdfs:subClassOf roar:Role .
 
-    thes:Ondertrouw a roar:EventType ;
-        rdfs:label "Ondertrouw" ;
-        rdfs:subClassOf roar:RegistrationEvent .
+    thes:Kind a roar:RoleType ;
+        rdfs:label "Kind" ;
+        rdfs:subClassOf roar:Role .
+
+    # Thesaurus: DocumentTypes
+    thes:DtbDopen a roar:DocumentType ;
+        rdfs:label "DTB Dopen" ;
+        rdfs:subClassOf roar:Document .
 
     thes:Ondertrouwregister a roar:DocumentType ;
         rdfs:label "Ondertrouwregister" ;
         rdfs:subClassOf roar:Document .
 
-    thes:Vader a roar:RoleType ;
-        rdfs:label "Vader" ;
-        rdfs:subClassOf roar:Role .
-
+    thes:DtbBegraven a roar:DocumentType ;
+        rdfs:label "DTB Begraven" ;
+        rdfs:subClassOf roar:Document .
 
     #####################################################################
     # Mapping #
@@ -95,8 +120,6 @@
 
     roar:Event           owl:equivalentClass       ga:Event .
     roar:EventType       owl:equivalentClass       ga:EventType .
-    
-    roar:RegistrationEvent owl:subClassOf          ga:Event .
 
     roar:Document        owl:equivalentClass       ga:Record .
     roar:DocumentType    owl:equivalentClass       ga:RecordType .
