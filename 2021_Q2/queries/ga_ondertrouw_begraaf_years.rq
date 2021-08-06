@@ -1,0 +1,36 @@
+#+ summary: Assume an intention of marriage is close to the actual marriage. Assume a burial is close to a person's death. How many years after a marriage of a bride and groom one of the two dies? Syntax written in the Golden Agents ontology.
+#+ endpoint: https://sparql.goldenagents.org/
+#+ method: GET
+#+ tags:
+#+  - dtb
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ga: <https://data.goldenagents.org/ontology/>
+PREFIX thes: <https://data.goldenagents.org/thesaurus/>
+
+SELECT ?personX ?dateOTR ?dateBG ?person (?dateBGint - YEAR(?dateOTR) as ?years) WHERE {
+
+  ?personX a ga:Person ;
+    ga:hasName ?person .
+
+  ?eventOTR a thes:Ondertrouw ;
+    ga:hasXSDDate ?dateOTR .
+
+  ?eventBG a thes:Begraven ;
+    ga:hasXSDDate ?dateBG .
+
+  # Fix for faulty timestamps
+  BIND(xsd:integer(SUBSTR(STR(?dateBG), 0, 4)) as ?dateBGint)
+
+  ?partner a ?partnerType ;
+    ga:carriedBy ?personX ;
+    ga:carriedIn ?eventOTR .
+
+  FILTER(?partnerType = thes:Bruidegom || ?partnerType = thes:Bruid)
+
+  ?geregistreerde a thes:Geregistreerde ;
+    ga:carriedBy ?personX ;
+    ga:carriedIn ?eventBG .
+
+} ORDER BY ?years

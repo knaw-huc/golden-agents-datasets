@@ -1,0 +1,50 @@
+#+ summary: Assume an intention of marriage is close to the actual marriage. Assume a burial is close to a person's death. How many years after a marriage of a bride and groom one of the two dies?
+#+ endpoint: https://sparql.goldenagents.org/
+#+ method: GET
+#+ tags:
+#+  - dtb
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX roar: <https://data.goldenagents.org/ontology/roar/>
+PREFIX thes: <https://data.goldenagents.org/thesaurus/>
+PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+PREFIX pnv: <https://w3id.org/pnv#>
+
+SELECT ?personOTR ?dateOTR ?personBG ?dateBG ?person (?dateBGint - YEAR(?dateOTR) as ?years) WHERE {
+
+  # Begraaf
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_008_index_op_begraafregisters_voor_1811> {
+
+    ?eventBG a thes:Begraven ;
+        sem:hasTimeStamp ?dateBG .
+
+    # Fix for faulty timestamps
+    BIND(xsd:integer(SUBSTR(STR(?dateBG), 0, 4)) as ?dateBGint)
+
+    ?geregistreerde a thes:Geregistreerde ;
+        roar:carriedBy ?personBG ;
+        roar:carriedIn ?eventBG .
+  }
+
+  # Ondertrouw
+  GRAPH <https://data.goldenagents.org/datasets/ufab7d657a250e3461361c982ce9b38f3816e0c4b/saa_id_003_index_op_ondertrouwregisters> {
+
+    ?personOTR a roar:Person ;
+        pnv:hasName/pnv:literalName ?person .
+
+    ?eventOTR a thes:Ondertrouw ;
+        sem:hasTimeStamp ?dateOTR .
+
+    ?roleOTR roar:carriedBy ?personOTR ;
+        roar:carriedIn ?eventOTR .
+  }
+
+  # Linkset sameAs DTB-Ecartico
+  GRAPH <https://data.goldenagents.org/datasets/u692bc364e9d7fa97b3510c6c0c8f2bb9a0e5123b/dtb_linkset_1_20210723> {
+    ?personBG owl:sameAs ?personOTR .
+  }
+
+} ORDER BY ?years

@@ -1,0 +1,49 @@
+#+ summary: Assume an intention of marriage is close to the actual marriage. Assume a baptism is close to a child's birth. How many days after a marriage of a bride and groom is a child born? Syntax written in the Golden Agents ontology.
+#+ endpoint: https://sparql.goldenagents.org/
+#+ method: GET
+#+ tags:
+#+  - dtb
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ga: <https://data.goldenagents.org/ontology/>
+PREFIX thes: <https://data.goldenagents.org/thesaurus/>
+
+SELECT ?eventOTR ?eventDP ?father ?mother ?child ((?dateDP - ?dateOTR)/86400 AS ?days) WHERE {
+
+  ?personMale a ga:Person ;
+    ga:hasName ?father .
+
+  ?personFemale a ga:Person ;
+    ga:hasName ?mother .
+
+  ?personChild a ga:Person ;
+    ga:hasName ?child .
+
+  ?eventOTR a thes:Ondertrouw ;
+    ga:hasXSDDate ?dateOTR .
+
+  ?eventDP a thes:Doop ;
+    ga:hasXSDDate ?dateDP .
+
+  ?bruidegom a thes:Bruidegom ;
+    ga:carriedBy ?personMale ;
+    ga:carriedIn ?eventOTR .
+
+  ?bruid a thes:Bruid ;
+    ga:carriedBy ?personFemale ;
+    ga:carriedIn ?eventOTR .
+
+  ?vader a thes:Vader ;
+    ga:carriedBy ?personMale ;
+    ga:carriedIn ?eventDP .
+
+  ?moeder a thes:Moeder;
+    ga:carriedBy ?personFemale ;
+    ga:carriedIn ?eventDP .
+
+  ?kind a thes:Kind ;
+    ga:carriedBy ?personChild ;
+    ga:carriedIn ?eventDP .
+
+}
